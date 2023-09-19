@@ -53,9 +53,9 @@ class Pessoa {
       case >= 30 && < 35:
         return "Obesidade Grau I!";
       case >= 35 && < 40:
-        return "Obesidade Grau II(Severa)!";
+        return "Obesidade Grau II!";
       case >= 40:
-        return "Obesidade Grau III(Mórbida)!";
+        return "Obesidade Grau III!";
       default:
         return "Erro";
     }
