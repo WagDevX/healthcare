@@ -1,14 +1,12 @@
 // ignore_for_file: unnecessary_getters_setters
 
-import 'package:flutter/material.dart';
-
 class Pessoa {
-  final String _id = UniqueKey().toString();
+  int _id = 0;
   String _nome = "";
   double _peso = 0.0;
   double _altura = 0.0;
 
-  String get id => _id;
+  int get id => _id;
 
   String get nome => _nome;
 
@@ -22,7 +20,10 @@ class Pessoa {
 
   set nome(String nome) => _nome = nome;
 
-  Pessoa(String nome, double peso, double altura) {
+  set id(int id) => _id = id;
+
+  Pessoa(int id, String nome, double peso, double altura) {
+    _id = id;
     _altura = altura;
     _peso = peso;
     _nome = nome;

@@ -10,7 +10,8 @@ class CalculoImcRepository {
 
   Future<void> remove(String id) async {
     await Future.delayed(const Duration(milliseconds: 100));
-    _pessoas.remove(_pessoas.where((pessoa) => pessoa.id == id).first);
+    _pessoas
+        .remove(_pessoas.where((pessoa) => pessoa.id.toString() == id).first);
   }
 
   Future<List<Pessoa>> listarPessoas() async {

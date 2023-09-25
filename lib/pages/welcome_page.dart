@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:healthcare/pages/calculardora_imc_page.dart';
 import 'package:healthcare/router/router.dart';
-import 'package:blurrycontainer/blurrycontainer.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -9,71 +8,77 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        bottomOpacity: 0.0,
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        title: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: const BoxDecoration(
+              color: Color.fromRGBO(77, 145, 255, 0.3),
+              borderRadius: BorderRadius.all(Radius.circular(100))),
+          child: Container(
+            decoration: const BoxDecoration(
+              color: Color.fromRGBO(77, 145, 255, 0.4),
+              borderRadius: BorderRadius.all(Radius.circular(100)),
+            ),
+            child: Image.asset(
+              "lib/assets/images/_logo.png",
+              height: 150,
+              color: Colors.white,
+            ),
+          ),
+        ),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(40)),
+              image: DecorationImage(
+                  image: AssetImage('lib/assets/images/backgroundv_2.jpg'),
+                  fit: BoxFit.fitWidth)),
+        ),
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(40))),
+        backgroundColor: Colors.lightBlue,
+        toolbarHeight: MediaQuery.of(context).size.height * 0.7,
+      ),
       body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('lib/assets/images/backgroundv_2.jpg'),
-                fit: BoxFit.fitWidth)),
-        child: SizedBox(
-          width: double.infinity,
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            Expanded(
-              flex: 4,
-              child: Image.asset(
-                "lib/assets/images/_logo.png",
-                height: 200,
-                color: Colors.blue,
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(children: [
+              const Text(
+                "Seja bem vindo ao \napp Health Care!",
+                style: TextStyle(
+                    fontSize: 35,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.blueAccent),
               ),
-            ),
-            const Expanded(
-                flex: 2,
-                child: Text(
-                  "Seja bem vindo ao app Health Care!",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.blueAccent),
-                )),
-            const Expanded(
-              flex: 2,
-              child: Text(
-                "Vamos calcular o seu IMC?",
-                style: TextStyle(fontSize: 16, color: Colors.blueAccent),
-              ),
-            ),
-            Expanded(
-                flex: 1,
-                child: BlurryContainer(
-                    blur: 4,
-                    width: double.maxFinite,
-                    elevation: 0,
-                    color: Colors.transparent,
-                    padding: const EdgeInsets.all(2),
-                    borderRadius: const BorderRadius.all(Radius.circular(20)),
-                    child: TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pushReplacement(
-                              Routering.createRoute(
-                                  const CalculadoraImcPage()));
-                        },
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Vamos lá!",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFF2196F3)),
-                            ),
-                            Icon(
-                              Icons.arrow_forward,
-                              color: Colors.blue,
-                            )
-                          ],
-                        ))))
-          ]),
+              Container(
+                padding: const EdgeInsets.all(7),
+                decoration: const BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.all(Radius.circular(60))),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white, width: 2),
+                    color: Colors.blue,
+                    borderRadius: const BorderRadius.all(Radius.circular(60)),
+                  ),
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(
+                            Routering.createRoute(const CalculadoraImcPage()));
+                      },
+                      icon: const Icon(
+                        Icons.arrow_forward,
+                        color: Colors.white,
+                      )),
+                ),
+              )
+            ]),
+          ],
         ),
       ),
     );
